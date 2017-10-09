@@ -1,0 +1,10 @@
+<li [class.completed]="todo.complete">
+  <div class="view">
+    <input type="checkbox" class="toggle" (click)="toggleTodoComplete(todo)" [checked]="todo.complete" title="">
+    <label class="title">{{todo.title}}</label>
+    <label class="date" *ngIf="!todo.complete">{{todo.created_time|date: "HH:mm:ss" }}</label>
+    <label class="date" *ngIf="todo.complete">{{todo.complete_time|date: "HH:mm:ss" }}</label>
+    <a class="detail" [routerLink]="['/todo-detail', todo.id]" routerLinkActive="true">more</a>
+    <button class="destroy" (click)="removeTodo(todo)">X</button>
+  </div>
+</li>
