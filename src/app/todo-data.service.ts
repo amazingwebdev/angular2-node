@@ -41,7 +41,7 @@ export class TodoDataService {
 
   getTodoById(id: number): Todo {
     return this.todos
-      .filter(todo => todo.id == id)
+      .filter(todo => todo.id === id)
       .pop();
   }
 
@@ -57,12 +57,12 @@ export class TodoDataService {
   }
 
   initialAllTodos(): Observable<any[]> {
-    return this._http.get('apis/todo-list.json')
+    return this._http.get('http://192.168.3.116:3000/people')
       .map(response => response.json());
   }
 
   getDetailById(id): Observable<any> {
-    return this._http.get(`apis/todo-item${id}.json`)
+    return this._http.get(`http://192.168.3.116:3000/people/${id}`)
       .map(res => res.json());
   }
 }

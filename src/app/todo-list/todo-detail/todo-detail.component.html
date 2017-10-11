@@ -1,9 +1,12 @@
-<div class="todo-detail">
-  <div class="name">
-    ID: {{ _todo.id }}
-  </div>
-  <div class="title">
-    Title: {{ _todo.title | firstBigLetter | wordCountLimit:_todo.id }}
-  </div>
-  <a routerLink="" routerLinkActive="true">Back</a>
-</div>
+<table class="todo-detail" border="1">
+  <thead>
+    <th>ID</th>
+    <th>TITLE</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ _todo.id }}</td>
+      <td>{{ _todo.title | firstBigLetter | wordCountLimit:_todo.id }}</td>
+    </tr>
+  </tbody>
+</table>
