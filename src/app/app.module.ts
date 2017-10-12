@@ -17,6 +17,7 @@ import { TodoDetailComponent } from './todo-list/todo-detail/todo-detail.compone
 import {TodoListResolver} from './resolvers/todo-list.resolver';
 import { FirstBigLetterPipe } from './pipes/first-big-letter.pipe';
 import { WordCountLimitPipe } from './pipes/word-count-limit.pipe';
+import { CommentLogPipe } from './pipes/comment-log.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WordCountLimitPipe } from './pipes/word-count-limit.pipe';
     RootComponent,
     TodoDetailComponent,
     FirstBigLetterPipe,
-    WordCountLimitPipe
+    WordCountLimitPipe,
+    CommentLogPipe
   ],
   imports: [
     BrowserModule,

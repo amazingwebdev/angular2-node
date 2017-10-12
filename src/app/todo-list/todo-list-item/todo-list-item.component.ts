@@ -23,4 +23,8 @@ export class TodoListItemComponent implements OnInit {
   removeTodo(todo) {
     this.todoDataService.deleteById(todo.id);
   }
+
+  addLog(title: String, log: String) {
+    this.todoDataService.addLog(title, log);
+  }
 }

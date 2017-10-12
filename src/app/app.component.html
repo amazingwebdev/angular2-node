@@ -1,2 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-todo-list></app-todo-list>
+<div class="comment">
+  <h1>
+    TodoItem Logs
+    <!--<input #isPipe type="checkbox" id="isPipe">-->
+    <!--<label for="isPipe"><small>Apply pipes for logs</small></label>-->
+  </h1>
+
+  <ul *ngFor="let log of comment_logs; let i = index">
+    <li>
+      <h5>
+        <!--<div *ngIf="isPipe.checked; else elseBlock">-->
+          <!--{{ log[0] | firstBigLetter |wordCountLimit:i+1 }}: {{ log[1] | firstBigLetter |wordCountLimit:i+1}}-->
+        <!--</div>-->
+        <!--<ng-template #elseBlock>-->
+          {{ log | commentLog }}
+        <!--</ng-template>-->
+      </h5>
+    </li>
+  </ul>
+</div>

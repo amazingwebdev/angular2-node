@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class TodoDataService {
   lastId = 0;
   todos: Todo[] = [];
+  comment_logs: any[] = [];
 
   constructor(
     private _http: Http
@@ -49,6 +50,19 @@ export class TodoDataService {
     return this.todos;
   }
 
+  addLog(title, log) {
+    if (log) {
+      this.comment_logs.push([
+        title,
+        log
+      ]);
+    }
+  }
+
+  getAllCommentLogs(): any[] {
+    return this.comment_logs;
+  }
+
   toggleTodoComplete(todo: Todo): Todo {
     return this.updateTodoById(todo.id, {
       complete: !todo.complete,
@@ -57,12 +71,12 @@ export class TodoDataService {
   }
 
   initialAllTodos(): Observable<any[]> {
-    return this._http.get('http://192.168.3.116:3000/people')
+    return this._http.get('http://192.168.3.116:3000/todo')
       .map(response => response.json());
   }
 
   getDetailById(id): Observable<any> {
-    return this._http.get(`http://192.168.3.116:3000/people/${id}`)
+    return this._http.get(`http://192.168.3.116:3000/todo/${id}`)
       .map(res => res.json());
   }
 }

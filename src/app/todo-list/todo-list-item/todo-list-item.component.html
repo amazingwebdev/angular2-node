@@ -2,6 +2,8 @@
   <div class="view">
     <input type="checkbox" class="toggle" (click)="toggleTodoComplete(todo)" [checked]="todo.complete" title="">
     <label class="title">{{todo.title}}</label>
+    <input #newLog type="text" id="log_text" placeholder="Please enter anything you like." (keyup.enter)="addLog(todo.title, newLog.value); newLog.value = '';">
+    <input type="button" value="OK" (click)="addLog(todo.title, newLog.value);  newLog.value = '';">
     <label class="date" *ngIf="!todo.complete">{{todo.created_time|date: "HH:mm:ss" }}</label>
     <label class="date" *ngIf="todo.complete">{{todo.complete_time|date: "HH:mm:ss" }}</label>
     <a class="detail" [routerLink]="['/todo-detail', todo.id]" routerLinkActive="true">more</a>
