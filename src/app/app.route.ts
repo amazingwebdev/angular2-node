@@ -4,9 +4,11 @@ import {AboutComponent} from './about/about.component';
 import {TodoDetailComponent} from './todo-list/todo-detail/todo-detail.component';
 import {TodoDetailResolver} from './resolvers/todo-detail.resolver';
 import {TodoListResolver} from './resolvers/todo-list.resolver';
+import { AuthComponent } from './auth/auth.component';
 
 export const appRoute: Routes = [
-  { path: '', redirectTo: '/guide', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
   { path: 'guide', component: AppComponent, resolve: { todo_list: TodoListResolver} },
   { path: 'about', component: AboutComponent },
   { path: 'todo-detail/:todo_id', component: TodoDetailComponent, resolve: {todo_item: TodoDetailResolver} }

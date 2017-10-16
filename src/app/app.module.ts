@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -18,6 +18,7 @@ import {TodoListResolver} from './resolvers/todo-list.resolver';
 import { FirstBigLetterPipe } from './pipes/first-big-letter.pipe';
 import { WordCountLimitPipe } from './pipes/word-count-limit.pipe';
 import { CommentLogPipe } from './pipes/comment-log.pipe';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,13 @@ import { CommentLogPipe } from './pipes/comment-log.pipe';
     TodoDetailComponent,
     FirstBigLetterPipe,
     WordCountLimitPipe,
-    CommentLogPipe
+    CommentLogPipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoute,
       { enableTracing: true }
