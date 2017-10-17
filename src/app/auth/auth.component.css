@@ -1,0 +1,15 @@
+.login {
+  background-color: white;
+  padding: 30px;
+  max-width: 350px;
+  position: relative;
+  left: 50px;
+  top: 150px;
+  border: 1px #e4e1e1 solid;
+  box-shadow: 9px 9px 20px 0 dimgrey;
+}
+
+.input-error {
+  padding: 10px 0;
+  color: #bf2b2b;
+}
