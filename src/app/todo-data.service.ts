@@ -1,6 +1,6 @@
 ///<reference path="todo.ts"/>
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 import {Todo} from './todo';
@@ -8,26 +8,24 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TodoDataService {
-  lastId = 0;
   todos: Todo[] = [];
   comment_logs: any[] = [];
+
+  private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
+  private options = new RequestOptions({ headers: this.headers });
 
   constructor(
     private _http: Http
   ) { }
 
-  addTodo(new_todo: Todo): TodoDataService {
-    ++this.lastId;
-    new_todo.id = this.lastId;
+  addTodo(new_todo: Todo): Observable<any> {
     new_todo.created_time = new Date();
-    this.todos.push(new_todo);
-    return this;
+
+    return this._http.post('http://192.168.3.116:3000/todo', new_todo);
   }
 
-  deleteById(id: number): TodoDataService {
-    this.todos = this.todos
-      .filter(todo => todo.id !== id);
-    return this;
+  deleteById(id: number): Observable<any> {
+    return this._http.delete(`http://192.168.3.116:3000/todo/${id}`);
   }
 
   updateTodoById(id: number, values: Object = {}): Todo {

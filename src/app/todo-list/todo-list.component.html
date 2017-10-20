@@ -5,12 +5,12 @@
   </header>
   <section class="main" *ngIf="todo_list">
     <ul class="todo-list">
-      <div *ngFor="let todo of todo_list | slice:0:3">
-        <app-todo-list-item [todo]="todo"></app-todo-list-item>
+      <div *ngFor="let todo of todo_list">
+        <app-todo-list-item [todo]="todo" (deletedTodo)="onDelete($event)"></app-todo-list-item>
       </div>
     </ul>
   </section>
-  <footer class="footer" *ngIf="todos.length > 0">
-    <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+  <footer class="footer" *ngIf="todo_list.length > 0">
+    <span class="todo-count"><strong>{{todo_list.length}}</strong> {{todo_list.length == 1 ? 'item' : 'items'}} left</span>
   </footer>
 </section>

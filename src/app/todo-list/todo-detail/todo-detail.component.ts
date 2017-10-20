@@ -17,7 +17,6 @@ export class TodoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('!!!!!!!!!' + this._route.snapshot.data['todo_item']);
     // this._todo$ = this._todoDataService.getDetailById(this._route.snapshot.params['todo_id']);
     this._todo = this._route.snapshot.data['todo_item'];
   }

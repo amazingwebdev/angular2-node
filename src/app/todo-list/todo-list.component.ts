@@ -28,7 +28,14 @@ export class TodoListComponent implements OnInit {
       alert('Please input any title.');
       return;
     }
-    this.todoDataService.addTodo(this.newTodo);
+    // this.newTodo.id = this.todo_list.length;
+    this.todoDataService.addTodo(this.newTodo)
+      .subscribe(res => {
+        this.todo_list.push(res.json());
+      },
+      err => {
+        alert(err.message);
+      });
     this.newTodo = new Todo();
   }
 
@@ -36,4 +43,8 @@ export class TodoListComponent implements OnInit {
     return this.todoDataService.getAllTodos();
   }
 
+  onDelete(deletedTodo: Todo) {
+    const index = this.todo_list.findIndex(todo => todo._id === deletedTodo._id);
+    this.todo_list.splice(index, 1);
+  }
 }

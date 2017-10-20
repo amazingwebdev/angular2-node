@@ -39,7 +39,7 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoute,
-      { enableTracing: true }
+      { enableTracing: false }
     ),
     HttpModule
   ],
