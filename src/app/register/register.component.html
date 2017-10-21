@@ -1,3 +1,35 @@
-<p>
-  register works!
-</p>
+<div class="container signup">
+  <h1>Sign Up</h1>
+  <div class="alert alert-success" role="alert" [hidden]="!successMessage">
+    {{ successMessage }}
+  </div>
+  <div class="alert alert-danger" role="alert" [hidden]="!failMessage">
+    {{ failMessage }}
+  </div>
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" [formControl]="emailControl">
+      <div class="input-error" *ngIf="emailControl.hasError('email') && emailControl.touched && !emailControl.hasError('required')">This string is not the type of email.</div>
+      <div class="input-error" *ngIf="emailControl.hasError('required') && emailControl.touched">This field is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" [formControl]="passwordControl">
+      <div class="input-error" *ngIf="passwordControl.hasError('minlength') && passwordControl.touched && !passwordControl.hasError('required')">The length must be 8 at least.</div>
+      <div class="input-error" *ngIf="passwordControl.hasError('required') && passwordControl.touched">This field is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="password_confirm">Password Confirm:</label>
+      <input type="password" class="form-control" [formControl]="passwordConfirmControl" id="password_confirm">
+      <div class="input-error" *ngIf="passwordConfirmControl.hasError('minlength') && passwordConfirmControl.touched && !passwordConfirmControl.hasError('required')">The length must be 8 at least.</div>
+      <div class="input-error" *ngIf="passwordConfirmControl.hasError('required') && passwordConfirmControl.touched">This field is required.</div>
+    </div>
+
+    <button type="submit" class="btn btn-info" [disabled]="!signupForm.valid">Register</button>
+    <a routerLink="/auth"><button type="button" class="btn btn-default float-right">Cancel</button></a>
+
+  </form>
+</div>

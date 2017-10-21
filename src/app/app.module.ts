@@ -19,6 +19,8 @@ import { FirstBigLetterPipe } from './pipes/first-big-letter.pipe';
 import { WordCountLimitPipe } from './pipes/word-count-limit.pipe';
 import { CommentLogPipe } from './pipes/comment-log.pipe';
 import { AuthComponent } from './auth/auth.component';
+import { RegisterComponent } from './register/register.component';
+import {UserDataService} from './user-data.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { AuthComponent } from './auth/auth.component';
     FirstBigLetterPipe,
     WordCountLimitPipe,
     CommentLogPipe,
-    AuthComponent
+    AuthComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { AuthComponent } from './auth/auth.component';
   providers: [
     TodoDataService,
     TodoDetailResolver,
-    TodoListResolver
+    TodoListResolver,
+    UserDataService
   ],
   bootstrap: [RootComponent]
 })

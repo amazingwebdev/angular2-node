@@ -2,9 +2,10 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-
-import {Todo} from './todo';
 import 'rxjs/add/operator/map';
+
+import { Todo } from './todo';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class TodoDataService {
@@ -21,11 +22,11 @@ export class TodoDataService {
   addTodo(new_todo: Todo): Observable<any> {
     new_todo.created_time = new Date();
 
-    return this._http.post('http://192.168.3.116:3000/todo', new_todo);
+    return this._http.post(environment.static_url + '/todo', new_todo);
   }
 
   deleteById(id: number): Observable<any> {
-    return this._http.delete(`http://192.168.3.116:3000/todo/${id}`);
+    return this._http.delete(environment.static_url + `/todo/${id}`);
   }
 
   updateTodoById(id: number, values: Object = {}): Todo {
@@ -69,12 +70,12 @@ export class TodoDataService {
   }
 
   initialAllTodos(): Observable<any[]> {
-    return this._http.get('http://192.168.3.116:3000/todo')
+    return this._http.get(environment.static_url + '/todo')
       .map(response => response.json());
   }
 
   getDetailById(id): Observable<any> {
-    return this._http.get(`http://192.168.3.116:3000/todo/${id}`)
+    return this._http.get(environment.static_url + `/todo/${id}`)
       .map(res => res.json());
   }
 }

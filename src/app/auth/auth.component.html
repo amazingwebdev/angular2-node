@@ -1,28 +1,28 @@
 <div class="container login">
   <h1>Login</h1>
+  <div class="alert alert-danger" role="alert" [hidden]="!failMessage">
+    {{ failMessage }}
+  </div>
+  <div class="alert alert-success" role="alert" [hidden]="!successMessage">
+    {{ successMessage }}
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" ([ngModel])="email" [formControl]="emailControl" placeholder="email@domain.com">
+      <input type="email" class="form-control" id="email" [formControl]="emailControl" placeholder="email@domain.com">
       <div class="input-error" *ngIf="emailControl.hasError('email') && emailControl.touched && !emailControl.hasError('required')">This string is not the type of email.</div>
       <div class="input-error" *ngIf="emailControl.hasError('required') && emailControl.touched">This field is required.</div>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" [(ngModel)]="password" [formControl]="passwordControl" placeholder="Please enter your password.">
+      <input type="password" class="form-control" id="password" [formControl]="passwordControl" placeholder="Please enter your password.">
       <div class="input-error" *ngIf="passwordControl.hasError('minlength') && passwordControl.touched && !passwordControl.hasError('required')">The length must be 8 at least.</div>
       <div class="input-error" *ngIf="passwordControl.hasError('required') && passwordControl.touched">This field is required.</div>
     </div>
 
-    <div class="form-group">
-      <label for="password_confirm">Password Confirm:</label>
-      <input type="password" class="form-control" [formControl]="passwordConfirmControl" id="password_confirm" placeholder="Please confirm your password." [(ngModel)]="passwordConfirm">
-      <div class="input-error" *ngIf="passwordConfirmControl.hasError('minlength') && passwordConfirmControl.touched && !passwordConfirmControl.hasError('required')">The length must be 8 at least.</div>
-      <div class="input-error" *ngIf="passwordConfirmControl.hasError('required') && passwordConfirmControl.touched">This field is required.</div>
-    </div>
-
-    <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Log In</button>
+    <a routerLink="/register"><button type="button" class="btn btn-info float-right">Register</button></a>
 
   </form>
 </div>
