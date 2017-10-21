@@ -78,4 +78,10 @@ export class TodoDataService {
     return this._http.get(environment.static_url + `/todo/${id}`)
       .map(res => res.json());
   }
+
+  /*get the search list with keyword*/
+  getSearchList(keyword: string): Observable<any[]> {
+    return this._http.get(environment.static_url + `/search/${keyword}`)
+      .map(res => res.json());
+  }
 }

@@ -5,23 +5,27 @@
   <a routerLink="/auth" routerLinkActive="true">Log out</a>
 </nav>
 <app-todo-list></app-todo-list>
-<div class="comment">
-  <h1>
-    TodoItem Logs
-    <!--<input #isPipe type="checkbox" id="isPipe">-->
-    <!--<label for="isPipe"><small>Apply pipes for logs</small></label>-->
-  </h1>
-
-  <ul *ngFor="let log of comment_logs; let i = index">
-    <li>
-      <h5>
-        <!--<div *ngIf="isPipe.checked; else elseBlock">-->
-          <!--{{ log[0] | firstBigLetter |wordCountLimit:i+1 }}: {{ log[1] | firstBigLetter |wordCountLimit:i+1}}-->
-        <!--</div>-->
-        <!--<ng-template #elseBlock>-->
-          {{ log | commentLog }}
-        <!--</ng-template>-->
-      </h5>
-    </li>
-  </ul>
+<div class="search">
+  <input #keyword type="text">
+  <button type="button" class="btn btn-default float-right" (click)="search(keyword.value)">Search</button>
 </div>
+<!--<div class="comment">-->
+  <!--<h1>-->
+    <!--TodoItem Logs-->
+    <!--&lt;!&ndash;<input #isPipe type="checkbox" id="isPipe">&ndash;&gt;-->
+    <!--&lt;!&ndash;<label for="isPipe"><small>Apply pipes for logs</small></label>&ndash;&gt;-->
+  <!--</h1>-->
+
+  <!--<ul *ngFor="let log of comment_logs; let i = index">-->
+    <!--<li>-->
+      <!--<h5>-->
+        <!--&lt;!&ndash;<div *ngIf="isPipe.checked; else elseBlock">&ndash;&gt;-->
+          <!--&lt;!&ndash;{{ log[0] | firstBigLetter |wordCountLimit:i+1 }}: {{ log[1] | firstBigLetter |wordCountLimit:i+1}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ng-template #elseBlock>&ndash;&gt;-->
+          <!--{{ log | commentLog }}-->
+        <!--&lt;!&ndash;</ng-template>&ndash;&gt;-->
+      <!--</h5>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->

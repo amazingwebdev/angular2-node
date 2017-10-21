@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { appRoute } from './app.route';
 import {TodoDataService} from './todo-data.service';
 import {TodoDetailResolver} from './resolvers/todo-detail.resolver';
+import { SearchListResolver } from './resolvers/search-list.resolver';
 
 import { AppComponent } from './app.component';
 import {TodoListComponent} from './todo-list/todo-list.component';
@@ -21,6 +22,7 @@ import { CommentLogPipe } from './pipes/comment-log.pipe';
 import { AuthComponent } from './auth/auth.component';
 import { RegisterComponent } from './register/register.component';
 import {UserDataService} from './user-data.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {UserDataService} from './user-data.service';
     WordCountLimitPipe,
     CommentLogPipe,
     AuthComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {UserDataService} from './user-data.service';
     TodoDataService,
     TodoDetailResolver,
     TodoListResolver,
-    UserDataService
+    UserDataService,
+    SearchListResolver
   ],
   bootstrap: [RootComponent]
 })

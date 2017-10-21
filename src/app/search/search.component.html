@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-center">Search result by {{ keyword }}</h1>
+  <section class="main" *ngIf="searchList">
+    <ul class="todo-list">
+      <li *ngFor="let todo of searchList">
+        <!--<app-todo-list-item [todo]="todo"></app-todo-list-item>-->
+        {{ todo.title }}
+      </li>
+    </ul>
+  </section>
+  <a routerLink="/guide">Back</a>
+</div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {NgbButtonLabel} from '@ng-bootstrap/ng-bootstrap/buttons/label';
+import {Route, Router} from '@angular/router';
+
 import {TodoDataService} from './todo-data.service';
 
 @Component({
@@ -12,11 +13,17 @@ export class AppComponent implements OnInit {
   comment_logs: any[] = [];
 
   constructor(
-    private _todoDataService: TodoDataService
+    private _todoDataService: TodoDataService,
+    private _router: Router,
   ) {}
 
   ngOnInit() {
     this.comment_logs = this._todoDataService.getAllCommentLogs();
   }
 
+  search(keyword: string) {
+    if (keyword.trim()) {
+      this._router.navigate(['/search', keyword]);
+    }
+  }
 }
